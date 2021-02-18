@@ -3,6 +3,7 @@ package com.videos.application;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import java.util.Date;
 
 import com.videos.domain.*;
 import com.videos.application.*;
@@ -42,11 +43,11 @@ public class VideoCreator {
 		tCreator.createTag(video);
 		
 		// Printing videos.
-		videos.add(video);
+		videos.add(video);		
 	}
 	
 	
-	// Method to check if all the fields are entered.
+	// Checking if all the fields are entered.
 	public void checkData (String title, String url ) throws NullPointerException {
 		
 		if (title.length() < 1 || url.length() < 1) 
@@ -54,8 +55,21 @@ public class VideoCreator {
 		
 	}
 	
+	// Setting and getting the video status at the moment of check.
 	public String getVideos() {
-		return "VIDEOS: \nYou have " + videos.size() + " videos.\n" + videos;
+		Date checkStatus =  new Date();
+		String videoList = "";
+		for (Videos v: videos) {			
+			v.setStatus(checkStatus);
+			videoList = videoList + v + v.getStatus();			
+		}
+		return videoList;
+		
+	}
+	
+	// Getting the videos list size.
+	public String getVideosSize() {
+		return "\nYou have " + videos.size() + " videos.";
 	}
 	
 	

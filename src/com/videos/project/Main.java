@@ -48,8 +48,10 @@ public class Main {
 		
 		// Printing the user data.
 		JOptionPane.showMessageDialog(null, "DATA SUMMARY: \n" + uCreator.getUser());
-		// Showing videos.
-		JOptionPane.showMessageDialog(null, vCreator.getVideos());
+		
+		// Showing videos and status.
+		JOptionPane.showMessageDialog(null, "VIDEO SUMMARY: " + vCreator.getVideosSize() 
+						+ vCreator.getVideos());
 	}
 
 }
