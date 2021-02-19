@@ -8,7 +8,7 @@ public class Videos {
 	private String title;
 	private String url;
 	private String tag;
-	protected String status = "uploading";
+	protected Status status;
 	protected Date created; 
 	
 	ArrayList <String> tags = new ArrayList <String>();
@@ -29,17 +29,23 @@ public class Videos {
 		return tags.toString();
 	}
 	
-	// Adding and getting the status with the date of check.
+	// Adding and getting the status with the date of check. Status coming from Enum Class.
+	public enum Status {
+		UPLOADING,
+		VERIFYING,
+		PUBLIC
+	}
+	
 	public void setStatus(Date checkStatus) {
 		double timeLapse = (checkStatus.getTime() - created.getTime()) * 0.001;
 		if (timeLapse < 10) {
-			status = "uploading";			
+			status = Status.UPLOADING;			
 		}
 		else if (timeLapse < 30) {
-			status = "verifying";			
+			status = Status.VERIFYING;			
 		}
 		else {
-			status = "public";			
+			status = Status.PUBLIC;			
 		}
 	}
 
